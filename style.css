@@ -88,7 +88,7 @@ body {
 }
 
 .data.speed {
-	width: 80px;
+	width: 110px;
 }
 
 .speed-cat {
@@ -97,6 +97,7 @@ body {
 
 .real-speed {
 	width: 25px;
+	display: inline-block;
 }
 
 .cat {

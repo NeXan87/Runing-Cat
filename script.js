@@ -29,7 +29,7 @@ const goCat = async () => {
 				catRun.classList.add('cat-reverse');
 				catRun.style.left = i + 'px';
 				newSpeed.textContent = i;
-				await sleep(+speedCat.value);
+				await sleep(-(+speedCat.value - 10));
 			}
 			if (i == screenWidth - 160 && switchButtonStart) {
 				corners.textContent = ++countCorners;
@@ -47,7 +47,7 @@ const goCat = async () => {
 				catRun.classList.remove('cat-reverse');
 				catRun.style.left = i + 'px';
 				newSpeed.textContent = i;
-				await sleep(+speedCat.value);
+				await sleep(-(+speedCat.value - 10));
 			}
 			if (i == 0 && switchButtonStart) {
 				corners.textContent = ++countCorners;
