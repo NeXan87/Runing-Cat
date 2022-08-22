@@ -93,6 +93,7 @@ body {
 
 .speed-cat {
 	cursor: pointer;
+	width: 110px;
 }
 
 .real-speed {
