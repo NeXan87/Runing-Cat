@@ -49,7 +49,7 @@ const goCat = async () => {
 				newSpeed.textContent = i;
 				await sleep(-(+speedCat.value - 10));
 			}
-			if (i <= 0 && switchButtonStart) {
+			if (switchButtonStart) {
 				corners.textContent = ++countCorners;
 				catRezerse = false;
 				goCat();
