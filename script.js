@@ -32,9 +32,7 @@ const goCat = async () => {
 				await sleep(-(+speedCat.value - 10));
 			}
 			if (switchButtonStart) {
-				corners.textContent = ++countCorners;
-				catRezerse = true;
-				goCat();
+				reverseCat();
 			}
 
 		} else {
@@ -50,9 +48,7 @@ const goCat = async () => {
 				await sleep(-(+speedCat.value - 10));
 			}
 			if (switchButtonStart) {
-				corners.textContent = ++countCorners;
-				catRezerse = false;
-				goCat();
+				reverseCat();
 			}
 
 		}
@@ -64,6 +60,12 @@ function startCat() {
 	controlsCat[0].textContent = 'Стоп';
 	switchButtonStart = true;
 	corners.textContent = countCorners;
+}
+
+function reverseCat() {
+	corners.textContent = ++countCorners;
+	(!catRezerse) ? catRezerse = true : catRezerse = false;
+	goCat();
 }
 
 function stopCat() {
