@@ -3,6 +3,7 @@ let controlsCat = document.querySelectorAll('.button');
 let speedCat = document.querySelector('.speed-cat');
 let realSpeed = document.querySelector('.real-speed');
 let newSpeed = document.querySelector('.new-speed');
+let titleCounter = document.querySelector('.title-counter');
 let corners = document.querySelector('.count-corners');
 let cornersInput = document.querySelector('.max-corners');
 let switchButtonStart, catRezerse;
@@ -58,6 +59,7 @@ const goCat = async () => {
 function startCat() {
 	cornersInput.setAttribute('disabled', '');
 	controlsCat[0].textContent = 'Стоп';
+	titleCounter.textContent = 'Развороты: ';
 	switchButtonStart = true;
 	corners.textContent = countCorners;
 }
@@ -81,11 +83,15 @@ function resetCat() {
 	i = 0;
 	catRun.style.left = i + 'px';
 	controlsCat[0].textContent = 'Cтарт';
+	titleCounter.textContent = 'Развороты: ';
 	catRun.classList.add('cat-reverse');
 	newSpeed.textContent = 0;
 	corners.textContent = 0;
 	cornersInput.value = 0;
-	if (countCorners === cornersMax && cornersMax !== 0) corners.textContent = cornersMax;
+	if (countCorners === cornersMax && cornersMax !== 0) {
+		titleCounter.textContent = 'Разворотов: ';
+		corners.textContent = cornersMax;
+	}
 	countCorners = 0;
 	cornersMax = 0;
 }
