@@ -1,0 +1,11 @@
+@media screen and (max-width:500px) {
+	.controls {
+		flex-direction: column;
+	}
+
+	.controls>[class] {
+		margin-right: 0;
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+}
