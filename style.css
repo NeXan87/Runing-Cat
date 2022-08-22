@@ -101,9 +101,10 @@ body {
 	display: inline-block;
 }
 
-.cat {
+.cat-road {
 	width: 100%;
-	height: 200px;
+	height: 160px;
+	margin: 20px 0;
 	position: relative;
 	display: block;
 }
@@ -112,12 +113,15 @@ body {
 	transform: scale(-1, 1);
 }
 
-.cat-image {
+.cat {
 	position: absolute;
 	top: 0;
 	bottom: 0;
 	left: 0;
 	right: auto;
 	margin: auto;
+}
+
+.cat-image {
 	transition: transform .2s;
 }

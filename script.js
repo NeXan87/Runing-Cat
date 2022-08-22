@@ -1,4 +1,5 @@
-let catRun = document.querySelector('.cat-image');
+let catRun = document.querySelector('.cat');
+let catImg = document.querySelector('.cat-image');
 let controlsCat = document.querySelectorAll('.button');
 let speedCat = document.querySelector('.speed-cat');
 let realSpeed = document.querySelector('.real-speed');
@@ -11,7 +12,7 @@ let i = 0;
 let cornersMax = 0;
 let countCorners = 0;
 const screenWidth = window.screen.width;
-catRun.classList.add('cat-reverse');
+catImg.classList.add('cat-reverse');
 
 const sleep = (milliseconds) => {
 	return new Promise(resolve => setTimeout(resolve, milliseconds))
@@ -27,8 +28,9 @@ const goCat = async () => {
 					stopCat();
 					break;
 				}
-				catRun.classList.add('cat-reverse');
-				catRun.style.left = i + 'px';
+				catImg.classList.add('cat-reverse');
+				// catRun.style.left = i + 'px';
+				catRun.style.transform = 'translate(' + i + 'px, 0)';
 				newSpeed.textContent = i;
 				await sleep(-(+speedCat.value - 10));
 			}
@@ -43,8 +45,9 @@ const goCat = async () => {
 					stopCat();
 					break;
 				}
-				catRun.classList.remove('cat-reverse');
-				catRun.style.left = i + 'px';
+				catImg.classList.remove('cat-reverse');
+				// catRun.style.left = i + 'px';
+				catRun.style.transform = 'translate(' + i + 'px, 0)';
 				newSpeed.textContent = i;
 				await sleep(-(+speedCat.value - 10));
 			}
@@ -60,7 +63,7 @@ function startCat() {
 	cornersInput.setAttribute('disabled', '');
 	controlsCat[0].textContent = 'Стоп';
 	titleCounter.textContent = 'Развороты: ';
-	catRun.src = 'cat_walk.gif';
+	catImg.src = 'cat_walk.gif';
 	switchButtonStart = true;
 	corners.textContent = countCorners;
 }
@@ -74,7 +77,7 @@ function reverseCat() {
 function stopCat() {
 	if (countCorners === cornersMax && cornersMax !== 0) resetCat();
 	controlsCat[0].textContent = 'Cтарт';
-	catRun.src = 'cat_walk_no_anim.gif';
+	catImg.src = 'cat_walk_no_anim.gif';
 	switchButtonStart = false;
 }
 
@@ -83,11 +86,12 @@ function resetCat() {
 	catRezerse = false;
 	switchButtonStart = false;
 	i = 0;
-	catRun.style.left = i + 'px';
+	// catRun.style.left = i + 'px';
+	catRun.style.transform = 'translate(0px, 0)';
 	controlsCat[0].textContent = 'Cтарт';
 	titleCounter.textContent = 'Развороты: ';
-	catRun.src = 'cat_walk_no_anim.gif';
-	catRun.classList.add('cat-reverse');
+	catImg.src = 'cat_walk_no_anim.gif';
+	catImg.classList.add('cat-reverse');
 	newSpeed.textContent = 0;
 	corners.textContent = 0;
 	cornersInput.value = 0;
