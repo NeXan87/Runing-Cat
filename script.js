@@ -60,6 +60,7 @@ function startCat() {
 	cornersInput.setAttribute('disabled', '');
 	controlsCat[0].textContent = 'Стоп';
 	titleCounter.textContent = 'Развороты: ';
+	catRun.src = 'cat_walk.gif';
 	switchButtonStart = true;
 	corners.textContent = countCorners;
 }
@@ -73,6 +74,7 @@ function reverseCat() {
 function stopCat() {
 	if (countCorners === cornersMax && cornersMax !== 0) resetCat();
 	controlsCat[0].textContent = 'Cтарт';
+	catRun.src = 'cat_walk_no_anim.gif';
 	switchButtonStart = false;
 }
 
@@ -84,6 +86,7 @@ function resetCat() {
 	catRun.style.left = i + 'px';
 	controlsCat[0].textContent = 'Cтарт';
 	titleCounter.textContent = 'Развороты: ';
+	catRun.src = 'cat_walk_no_anim.gif';
 	catRun.classList.add('cat-reverse');
 	newSpeed.textContent = 0;
 	corners.textContent = 0;
