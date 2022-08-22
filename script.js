@@ -3,7 +3,6 @@ let controlsCat = document.querySelectorAll('.button');
 let speedCat = document.querySelector('.speed-cat');
 let realSpeed = document.querySelector('.real-speed');
 let newSpeed = document.querySelector('.new-speed');
-let totalCorners = document.querySelector('.corners');
 let corners = document.querySelector('.count-corners');
 let cornersInput = document.querySelector('.max-corners');
 let switchButtonStart, catRezerse;
