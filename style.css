@@ -109,10 +109,6 @@ body {
 	display: block;
 }
 
-.cat-reverse {
-	transform: scale(-1, 1);
-}
-
 .cat {
 	position: absolute;
 	top: 0;
@@ -124,4 +120,8 @@ body {
 
 .cat-image {
 	transition: transform .2s;
+}
+
+.cat-reverse {
+	transform: scale(-1, 1);
 }
