@@ -85,7 +85,7 @@ function resetCat() {
 	newSpeed.textContent = 0;
 	corners.textContent = 0;
 	cornersInput.value = 0;
-	if (countCorners === cornersMax && cornersMax !== 0) corners.append(' (' + cornersMax + ')');
+	if (countCorners === cornersMax && cornersMax !== 0) corners.textContent = cornersMax;
 	countCorners = 0;
 	cornersMax = 0;
 }
