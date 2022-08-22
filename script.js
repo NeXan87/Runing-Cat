@@ -79,12 +79,13 @@ function resetCat() {
 	i = 0;
 	catRun.style.left = i + 'px';
 	controlsCat[0].textContent = 'Cтарт';
-	newSpeed.textContent = 0;
 	catRun.classList.add('cat-reverse');
 	newSpeed.textContent = 0;
 	corners.textContent = 0;
+	cornersInput.value = 0;
 	if (countCorners === cornersMax && cornersMax !== 0) corners.append(' (выполнено: ' + cornersMax + ')');
 	countCorners = 0;
+	cornersMax = 0;
 }
 
 controlsCat[0].onclick = function () {

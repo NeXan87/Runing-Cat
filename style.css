@@ -46,28 +46,40 @@ body {
 	background-color: #ededed;
 }
 
+.desc-corners {
+	margin-right: 10px;
+}
+
 .max-corners {
 	width: 65px;
 	border-radius: 5px;
 	border: 1px solid #878787;
 	padding: 5px;
+	align-self: center;
 }
 
 .max-corners:focus {
 	outline: none;
 }
+
 .speed-cat {
 	margin-left: 10px;
+	vertical-align: middle;
 }
-.data.title-corners,
+
 #speed-cat.speed-cat {
 	margin-right: 10px;
+}
+
+.title-corners {
+	display: flex;
 }
 
 .infinity {
 	color: #303030;
 	font-size: 10px;
 	text-align: right;
+	display: block;
 }
 
 .data {

@@ -19,10 +19,13 @@
 					<button type="button" class="button">Старт</button>
 					<button type="button" class="button">Сброс</button>
 				</div>
-				<label class="data title-corners" for="max-corners">Всего разворотов
-					<div class="infinity">0 - бесконечно</div>
+				<label class="data title-corners">
+					<div class="desc-corners">Всего разворотов
+						<span class="infinity">0 - бесконечно</span>
+					</div>
+					<input class="max-corners" id="max-corners" type="number" name="max-corners" min="0" max="10000"
+						value="0">
 				</label>
-				<input class="max-corners" id="max-corners" ype="number" name="max-corners" min="0" max="10000" value="0">
 				<label class="data title-speed">Скорость
 					<input class="speed-cat" id="speed-cat" type="range" min="1" max="10" step="1" value="5">
 					<output class="data real-speed" name="real-speed">5</output>
