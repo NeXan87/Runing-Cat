@@ -1,11 +1,11 @@
-@media screen and (max-width:500px) {
+@media screen and (max-width:540px) {
 	.controls {
 		justify-content: center;
 	}
+}
 
-	.controls>[class] {
-		margin-right: 0;
-		padding-top: 10px;
-		padding-bottom: 10px;
+@media screen and (max-width:375px) {
+	.data {
+		font-size: 17px;
 	}
 }

@@ -23,9 +23,9 @@ body {
 }
 
 .controls>[class] {
-	margin-right: 3%;
 	padding-top: 6px;
 	padding-bottom: 6px;
+	padding: 6px 15px;
 }
 
 .button {
