@@ -31,7 +31,7 @@ const goCat = async () => {
 				newSpeed.textContent = i;
 				await sleep(-(+speedCat.value - 10));
 			}
-			if (i == screenWidth - 160 && switchButtonStart) {
+			if (i >= screenWidth - 160 && switchButtonStart) {
 				corners.textContent = ++countCorners;
 				catRezerse = true;
 				goCat();
@@ -49,7 +49,7 @@ const goCat = async () => {
 				newSpeed.textContent = i;
 				await sleep(-(+speedCat.value - 10));
 			}
-			if (i == 0 && switchButtonStart) {
+			if (i <= 0 && switchButtonStart) {
 				corners.textContent = ++countCorners;
 				catRezerse = false;
 				goCat();
