@@ -12,7 +12,6 @@ let i = 0;
 let cornersMax = 0;
 let countCorners = 0;
 const screenWidth = window.screen.width;
-catImg.classList.add('cat-reverse');
 
 const sleep = (milliseconds) => {
 	return new Promise(resolve => setTimeout(resolve, milliseconds))
@@ -28,7 +27,7 @@ const goCat = async () => {
 					stopCat();
 					break;
 				}
-				catImg.classList.add('cat-reverse');
+				catImg.classList.remove('cat-reverse');
 				// catRun.style.left = i + 'px';
 				catRun.style.transform = 'translate(' + i + 'px, 0)';
 				newSpeed.textContent = i;
@@ -45,7 +44,7 @@ const goCat = async () => {
 					stopCat();
 					break;
 				}
-				catImg.classList.remove('cat-reverse');
+				catImg.classList.add('cat-reverse');
 				// catRun.style.left = i + 'px';
 				catRun.style.transform = 'translate(' + i + 'px, 0)';
 				newSpeed.textContent = i;
@@ -91,7 +90,7 @@ function resetCat() {
 	controlsCat[0].textContent = 'Cтарт';
 	titleCounter.textContent = 'Развороты: ';
 	catImg.src = 'cat_walk_no_anim.gif';
-	catImg.classList.add('cat-reverse');
+	catImg.classList.remove('cat-reverse');
 	newSpeed.textContent = 0;
 	corners.textContent = 0;
 	cornersInput.value = 0;
