@@ -118,12 +118,48 @@ body {
 	background-color: #c1f4ff;
 }
 
+.cloud {
+	position: absolute;
+	height: auto;
+	left: 0;
+	transform: translate(-11vw, 0px);
+	animation: cloud linear infinite normal;
+}
+
+.cloud-1 {
+	width: 70px;
+	top: 50px;
+	animation-duration: 50s;
+}
+
+.cloud-2 {
+	width: 90px;
+	top: 75px;
+	animation-duration: 60s;
+	animation-delay: 5s;
+}
+
+.cloud-3 {
+	width: 110px;
+	top: 115px;
+	animation-duration: 70s;
+	animation-delay: 15s;
+}
+
+.cloud-4 {
+	width: 130px;
+	top: 180px;
+	animation-duration: 80s;
+	animation-delay: 25s;
+}
+
 .cat {
 	position: absolute;
 	bottom: 100px;
 	left: 0;
 	width: 160px;
 	height: 160px;
+	z-index: 2;
 }
 
 .cat-image {
@@ -152,4 +188,16 @@ body {
 	background: url(ground.png) repeat-x 0 100%;
 	height: 100%;
 	width: 100%;
+	z-index: 1;
+	position: relative;
+}
+
+@keyframes cloud {
+	from {
+		transform: translate(-11vw, 0px);
+	}
+
+	to {
+		transform: translate(100vw, 0px);
+	}
 }
