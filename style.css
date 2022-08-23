@@ -214,3 +214,21 @@ body {
 		transform: translate(100vw, 0px);
 	}
 }
+
+/* @keyframes cloud {
+	from {
+		transform: translate(40vw, 0px);
+	}
+
+	25% {
+		transform: translate(100vw, 0px);
+		display: none;
+	}
+	26% {
+		transform: translate(0vw, 0px);
+		display: block;
+	}
+	to {
+		transform: translate(40vw, 0px);
+	}
+} */
