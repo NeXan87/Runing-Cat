@@ -115,17 +115,13 @@ body {
 }
 
 .day-night {
-	padding: 0 15px !important;
+	padding: 0 0 0 15px !important;
 }
 
 .radio-time {
 	display: block;
 	font-size: 14px;
 	font-weight: bold;
-}
-
-.radio-time:first-child {
-	margin-bottom: 3px;
 }
 
 .cat-road {
@@ -298,7 +294,7 @@ body {
 
 @keyframes sky-sunset {
 	60% {
-		background: Tomato;
+		background: Coral;
 		box-shadow: 0 450px 255px -67px steelblue inset;
 	}
 
@@ -315,13 +311,13 @@ body {
 	}
 
 	60% {
-		background: Tomato;
+		background: Coral;
 		box-shadow: 0 450px 255px -67px steelblue inset;
 	}
 
 	to {
 		background: PaleTurquoise;
-		box-shadow: 0 374px 255px -67px LightCyan inset;
+		box-shadow: 0 600px 255px -67px LightCyan inset;
 	}
 }
 
