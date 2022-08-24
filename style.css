@@ -110,17 +110,39 @@ body {
 	display: inline-block;
 }
 
+.time {
+	margin-right: 10px;
+}
+
+.day-night {
+	padding: 0 15px !important;
+}
+
+.radio-time {
+	display: block;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.radio-time:first-child {
+	margin-bottom: 3px;
+}
+
 .cat-road {
 	width: 100%;
 	height: 100%;
 	position: relative;
 	display: block;
 	background: PaleTurquoise;
-	box-shadow: 0 374px 255px -67px LightCyan inset
+	box-shadow: 0 374px 255px -67px LightCyan inset;
 }
 
 .sky-sunset {
-	animation: sky-sunset 5s ease-in 1 normal forwards;
+	animation: sky-sunset 5s ease-in-out 1 normal forwards;
+}
+
+.sky-sunrise {
+	animation: sky-sunrise 5s ease-in-out 1 normal forwards;
 }
 
 .cloud {
@@ -130,6 +152,25 @@ body {
 	opacity: .9;
 	transform: translate(-20vw, 0px);
 	animation: cloud linear infinite normal;
+}
+
+.night {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	z-index: 3;
+	opacity: 0;
+}
+
+.night-sunset {
+	animation: night-sunset 5s ease-in-out 1 normal forwards;
+}
+
+.night-sunrise {
+	animation: night-sunrise 5s ease-in-out 1 normal forwards;
 }
 
 .ball {
@@ -239,15 +280,48 @@ body {
 	position: relative;
 }
 
+@keyframes night-sunset {
+	to {
+		opacity: 0.6;
+	}
+}
+
+@keyframes night-sunrise {
+	from {
+		opacity: 0.6;
+	}
+
+	to {
+		opacity: 0;
+	}
+}
+
 @keyframes sky-sunset {
-	50% {
+	60% {
 		background: Tomato;
-		box-shadow: 0 374px 255px -67px steelblue inset
+		box-shadow: 0 450px 255px -67px steelblue inset;
 	}
 
 	to {
 		background: #020e24;
-		box-shadow: 0 1000px 255px -67px #0f2962 inset
+		box-shadow: 0 1000px 255px -67px #0f2962 inset;
+	}
+}
+
+@keyframes sky-sunrise {
+	from {
+		background: #020e24;
+		box-shadow: 0 1000px 255px -67px #0f2962 inset;
+	}
+
+	60% {
+		background: Tomato;
+		box-shadow: 0 450px 255px -67px steelblue inset;
+	}
+
+	to {
+		background: PaleTurquoise;
+		box-shadow: 0 374px 255px -67px LightCyan inset;
 	}
 }
 
@@ -257,13 +331,13 @@ body {
 	}
 
 	to {
-		transform: rotate(90deg);
+		transform: rotate(180deg);
 	}
 }
 
 @keyframes sun-sunrise {
 	from {
-		transform: rotate(270deg);
+		transform: rotate(180deg);
 	}
 
 	to {
@@ -273,7 +347,7 @@ body {
 
 @keyframes moon-sunset {
 	from {
-		transform: rotate(270deg);
+		transform: rotate(180deg);
 	}
 
 	to {
@@ -287,13 +361,13 @@ body {
 	}
 
 	to {
-		transform: rotate(90deg);
+		transform: rotate(180deg);
 	}
 }
 
 @keyframes cloud {
 	from {
-		transform: translate(-11vw, 0px);
+		transform: translate(-20vw, 0px);
 	}
 
 	to {

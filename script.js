@@ -7,6 +7,10 @@ let newSpeed = document.querySelector('.new-speed');
 let titleCounter = document.querySelector('.title-counter');
 let corners = document.querySelector('.count-corners');
 let cornersInput = document.querySelector('.max-corners');
+let catRoad = document.querySelector('.cat-road');
+let night = document.querySelector('.night');
+let timesRadio = document.querySelectorAll('.time');
+let balls = document.querySelectorAll('.ball');
 let switchButtonStart, catRezerse;
 let i = 0;
 let cornersMax = 0;
@@ -123,4 +127,38 @@ speedCat.oninput = function () {
 
 cornersInput.onchange = function () {
 	cornersMax = +cornersInput.value;
+}
+
+for (let time of timesRadio) {
+	time.onclick = function () {
+
+		for (let setAttr of timesRadio) setAttr.setAttribute('disabled', '');
+		
+		setTimeout(radio_enabled, 5000);
+		
+		if (time.value === 'night_time') {
+			night.classList.remove('night-sunrise');
+			balls[0].classList.remove('sun-sunrise');
+			balls[1].classList.remove('moon-sunrise');
+			catRoad.classList.remove('sky-sunrise');
+			night.classList.add('night-sunset');
+			balls[0].classList.add('sun-sunset');
+			balls[1].classList.add('moon-sunset');
+			catRoad.classList.add('sky-sunset');
+		} else {
+			night.classList.remove('night-sunset');
+			balls[0].classList.remove('sun-sunset');
+			balls[1].classList.remove('moon-sunset');
+			catRoad.classList.remove('sky-sunset');
+			night.classList.add('night-sunrise');
+			balls[0].classList.add('sun-sunrise');
+			balls[1].classList.add('moon-sunrise');
+			catRoad.classList.add('sky-sunrise');
+		}
+	}
+
+}
+
+function radio_enabled() {
+	for (let time of timesRadio) time.removeAttribute('disabled', '');
 }
