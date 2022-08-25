@@ -115,7 +115,7 @@ function resetCat() {
 	catRun.style.transform = 'translate(0px, 0)';
 	controlsCat[0].textContent = 'Cтарт';
 	titleCounter.textContent = 'Развороты: ';
-	catImg.src = 'at_walk_no_anim.gif';
+	catImg.src = 'cat_walk_no_anim.gif';
 	catImg.classList.remove('cat-reverse');
 	newSpeed.textContent = 0;
 	corners.textContent = 0;
