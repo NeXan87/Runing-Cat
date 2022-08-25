@@ -89,7 +89,7 @@ function startCat() {
 	cornersInput.setAttribute('disabled', '');
 	controlsCat[0].textContent = 'Стоп';
 	titleCounter.textContent = 'Развороты: ';
-	catImg.src = './images/cat_walk.gif';
+	catImg.src = 'cat_walk.gif';
 	switchButtonStart = true;
 	corners.textContent = countCorners;
 }
@@ -103,7 +103,7 @@ function reverseCat() {
 function stopCat() {
 	if (countCorners === cornersMax && cornersMax !== 0) resetCat();
 	controlsCat[0].textContent = 'Cтарт';
-	catImg.src = './images/cat_walk_no_anim.gif';
+	catImg.src = 'cat_walk_no_anim.gif';
 	switchButtonStart = false;
 }
 
@@ -115,7 +115,7 @@ function resetCat() {
 	catRun.style.transform = 'translate(0px, 0)';
 	controlsCat[0].textContent = 'Cтарт';
 	titleCounter.textContent = 'Развороты: ';
-	catImg.src = './images/cat_walk_no_anim.gif';
+	catImg.src = 'at_walk_no_anim.gif';
 	catImg.classList.remove('cat-reverse');
 	newSpeed.textContent = 0;
 	corners.textContent = 0;
