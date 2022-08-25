@@ -183,12 +183,16 @@ body {
 	display: inline-block;
 }
 
+.day-night {
+	width: 60px;
+}
+
 .time {
-	margin-right: 10px;
+	vertical-align: middle;
 }
 
 .radio-time {
-	display: block;
+	display: inline-block;
 	font-size: 14px;
 	font-weight: bold;
 }
