@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, user-scalable=no">
 	<link rel="stylesheet" href="styles/style.css">
-
+	<link rel="stylesheet" href="styles/responsive.css">
 	<title>Бегущий кот</title>
 	<meta name="description" content="Бегущий кот - бессмысленный проект для закрепления навыков программирования">
 </head>
@@ -15,30 +15,37 @@
 	<main>
 		<section class="cat-section">
 			<div class="controls">
-				<div class="buttons">
-					<button type="button" class="button">Старт</button>
-					<button type="button" class="button">Сброс</button>
-				</div>
-				<form class="day-night">
-					<label class="radio-time"><input type="radio" class="time" name="time" value="day_time"
-							checked>День</label>
-					<label class="radio-time"><input type="radio" class="time" name="time" value="night_time">Ночь</label>
-				</form>
-				<label class="data title-corners">
-					<div class="desc-corners">Макс. разворотов
-						<span class="infinity">0 - бесконечно</span>
+				<div class="main-panel">
+					<div class="buttons">
+						<button type="button" class="button">Старт</button>
+						<button type="button" class="button">Сброс</button>
 					</div>
-					<input class="max-corners" id="max-corners" type="number" name="max-corners" min="0" max="10000"
-						value="0">
-				</label>
-				<label class="data title-speed">Скорость
-					<input class="speed-cat" id="speed-cat" type="range" min="1" max="10" step="1" value="5">
-					<output class="data real-speed" name="real-speed">5</output>
-				</label>
-				<div class="data speed">X: <span class="new-speed">0</span></div>
-				<div class="data corners">
-					<span class="title-counter">Развороты: </span>
-					<span class="count-corners">0</span>
+					<form class="day-night">
+						<label class="radio-time"><input type="radio" class="time" name="time" value="day_time"
+								checked>День</label>
+						<label class="radio-time"><input type="radio" class="time" name="time" value="night_time">Ночь</label>
+					</form>
+					<div class="top-menu">
+						<span class="menu"></span>
+					</div>
+				</div>
+				<div class="parameters">
+					<label class="data title-corners">
+						<div class="desc-corners">Макс. разворотов
+							<span class="infinity">0 - бесконечно</span>
+						</div>
+						<input class="max-corners" id="max-corners" type="number" name="max-corners" min="0" max="10000"
+							value="0">
+					</label>
+					<label class="data title-speed">Скорость
+						<input class="speed-cat" id="speed-cat" type="range" min="1" max="10" step="1" value="5">
+						<output class="data real-speed" name="real-speed">5</output>
+					</label>
+					<div class="data speed">X: <span class="new-speed">0</span></div>
+					<div class="data corners">
+						<span class="title-counter">Развороты: </span>
+						<span class="count-corners">0</span>
+					</div>
 				</div>
 			</div>
 			<div class="cat-road">

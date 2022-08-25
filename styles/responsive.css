@@ -1,11 +1,42 @@
-@media screen and (max-width:540px) {
-	.controls {
-		justify-content: center;
+@media screen and (max-width:1200px) {
+	.data {
+		font-size: 16px;
 	}
+
 }
 
-@media screen and (max-width:375px) {
-	.data {
-		font-size: 17px;
+@media screen and (max-width:1024px) {
+	.controls {
+		display: block;
+	}
+
+	.main-panel {
+		padding: 5px 15px 5px 5px;
+	}
+
+	.controls .buttons {
+		padding: 6px 5px;
+	}
+
+	.top-menu {
+		display: block;
+		margin-left: auto;
+	}
+
+	.parameters {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		background-color: #f68634;
+		z-index: -1;
+		justify-content: center;
+		box-shadow: 0px 2px 5px 0px #00000057;
+		transform: translate(0, -80px);
+		transition: transform .3s ease-in-out;
+	}
+
+	.menu.open .parameters {
+		display: block;
 	}
 }

@@ -20,21 +20,26 @@ body {
 
 .controls {
 	width: 100%;
-	padding: 5px 20px;
 	background-color: #f68634;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	flex-wrap: wrap;
 	box-shadow: 0px 2px 5px 0px #00000057;
 	position: relative;
-	z-index: 1;
+	z-index: 10;
 }
 
-.controls>[class] {
-	padding-top: 6px;
-	padding-bottom: 6px;
-	padding: 6px 15px;
+.main-panel {
+	display: flex;
+	align-items: center;
+	background-color: #f68634;
+	padding: 5px 2% 5px 15px;
+	position: relative;
+	height: 50px;
+}
+
+.buttons {
+	margin-right: 15px;
 }
 
 .button {
@@ -55,6 +60,72 @@ body {
 	background-color: #ededed;
 }
 
+.top-menu {
+	width: 35px;
+	height: 35px;
+	padding: 0 !important;
+	position: relative;
+	cursor: pointer;
+	display: none;
+}
+
+.menu,
+.menu::after,
+.menu::before {
+	content: ' ';
+	position: absolute;
+	right: 0;
+	border-radius: 5px;
+	width: 35px;
+	height: 5px;
+	background-color: #444;
+	transition: all .2s ease-in-out;
+}
+
+.menu {
+	top: 15px;
+	bottom: 0;
+	width: 35px;
+}
+
+.menu::before {
+	top: -10px;
+}
+
+.menu::after {
+	bottom: -10px;
+}
+
+.menu.open {
+	width: 0%;
+}
+
+.menu.open::before {
+	top: 0px;
+	transform: rotate(45deg);
+}
+
+.menu.open::after {
+	bottom: 0px;
+	transform: rotate(-45deg);
+}
+
+.parameters {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	width: 750px;
+	padding: 0px 15px;
+}
+
+.parameters>.data:not(:last-child) {
+	margin-right: 3%;
+}
+
+.parameters>.data {
+	padding: 10px 0;
+}
+
 .desc-corners {
 	margin-right: 10px;
 }
@@ -72,12 +143,8 @@ body {
 }
 
 .speed-cat {
-	margin-left: 10px;
+	margin: 0 5px;
 	vertical-align: middle;
-}
-
-#speed-cat.speed-cat {
-	margin-right: 10px;
 }
 
 .title-corners {
@@ -92,12 +159,12 @@ body {
 }
 
 .data {
-	font-size: 20px;
+	font-size: 16px;
 	font-weight: bold;
 }
 
 .data.speed {
-	width: 110px;
+	width: 60px;
 }
 
 .speed-cat {
@@ -106,7 +173,7 @@ body {
 }
 
 .real-speed {
-	width: 25px;
+	width: 18px;
 	display: inline-block;
 }
 
@@ -279,7 +346,7 @@ body {
 		url('/images/background.png') no-repeat 50% 100%;
 	height: 100%;
 	width: 100%;
-	z-index: 1;
+	z-index: 0;
 	position: relative;
 }
 

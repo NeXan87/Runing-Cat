@@ -1,6 +1,8 @@
 let catRun = document.querySelector('.cat');
 let catImg = document.querySelector('.cat-image');
 let controlsCat = document.querySelectorAll('.button');
+let menuButton = document.querySelector('.menu');
+let parameters = document.querySelector('.parameters');
 let speedCat = document.querySelector('.speed-cat');
 let realSpeed = document.querySelector('.real-speed');
 let newSpeed = document.querySelector('.new-speed');
@@ -177,4 +179,13 @@ for (let time of timesRadio) {
 
 function radio_enabled() {
 	for (let time of timesRadio) time.removeAttribute('disabled', '');
+}
+
+menuButton.onclick = function() {
+	menuButton.classList.toggle('open');
+	if (menuButton.classList.contains('open')) {
+		parameters.style.transform = 'translate(0px, 50px)';
+	} else {
+		parameters.style.transform = null;
+	}
 }
