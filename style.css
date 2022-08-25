@@ -236,7 +236,7 @@ body {
 	height: auto;
 	left: 0;
 	opacity: .9;
-	transform: translate(-20vw, 0px);
+	transform: translate(-30vw, 0px);
 	animation: cloud linear infinite normal;
 }
 
@@ -448,7 +448,7 @@ body {
 
 @keyframes cloud {
 	from {
-		transform: translate(-20vw, 0px);
+		transform: translate(-30vw, 0px);
 	}
 
 	to {
