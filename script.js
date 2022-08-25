@@ -59,7 +59,6 @@ const goCat = async () => {
 			setProgress = Math.round(countCorners / cornersMax * 100);
 			progress.value = setProgress;
 			progressStatus.textContent = setProgress + '%';
-			console.log(countCorners / cornersMax * 100);
 		} else {
 			progressBar.style.top = null;
 			progress.value = 0;
