@@ -10,6 +10,9 @@ let titleCounter = document.querySelector('.title-counter');
 let corners = document.querySelector('.count-corners');
 let cornersInput = document.querySelector('.max-corners');
 let catRoad = document.querySelector('.cat-road');
+let progressBar = document.querySelector('.progress-bar');
+let progress = document.querySelector('.progress');
+let progressStatus = document.querySelector('.progress-status');
 let starsCanvas = document.querySelector('#stars');
 let timesRadio = document.querySelectorAll('.time');
 let balls = document.querySelectorAll('.ball');
@@ -17,6 +20,7 @@ let switchButtonStart, catRezerse;
 let i = 0;
 let cornersMax = 0;
 let countCorners = 0;
+let setProgress = 0;
 const screenWidth = window.screen.width;
 
 const sleep = (milliseconds) => {
@@ -37,8 +41,8 @@ resizeCanvas();
 function drawStuff() {
 	for (let j = 0; j < stars; j++) {
 		x = Math.random() * starsCanvas.offsetWidth;
-		y = Math.random() * starsCanvas.offsetHeight, 
-		radius = Math.random() * 1.2;
+		y = Math.random() * starsCanvas.offsetHeight,
+			radius = Math.random() * 1.2;
 		context.beginPath();
 		context.arc(x, y, radius, 0, 360);
 		context.fillStyle = "white";
@@ -49,6 +53,19 @@ function drawStuff() {
 
 const goCat = async () => {
 	if (switchButtonStart) {
+
+		if (cornersMax !== 0) {
+			progressBar.style.top = '6px';
+			setProgress = Math.round(countCorners / cornersMax * 100);
+			progress.value = setProgress;
+			progressStatus.textContent = setProgress + '%';
+			console.log(countCorners / cornersMax * 100);
+		} else {
+			progressBar.style.top = null;
+			progress.value = 0;
+			progressStatus.textContent = 0 + '%';
+		}
+
 		if (!catRezerse) {
 
 			for (i; i < screenWidth - 160; i += 2) {
@@ -141,6 +158,9 @@ controlsCat[0].onclick = function () {
 
 controlsCat[1].onclick = function () {
 	resetCat();
+	progress.value = 0;
+	progressStatus.textContent = 0 + '%';
+	progressBar.style.top = null;
 }
 
 speedCat.oninput = function () {
@@ -181,7 +201,7 @@ function radio_enabled() {
 	for (let time of timesRadio) time.removeAttribute('disabled', '');
 }
 
-menuButton.onclick = function() {
+menuButton.onclick = function () {
 	menuButton.classList.toggle('open');
 	parameters.classList.toggle('open');
 }
