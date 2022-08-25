@@ -8,7 +8,7 @@ let titleCounter = document.querySelector('.title-counter');
 let corners = document.querySelector('.count-corners');
 let cornersInput = document.querySelector('.max-corners');
 let catRoad = document.querySelector('.cat-road');
-let night = document.querySelector('.night');
+let starsCanvas = document.querySelector('#stars');
 let timesRadio = document.querySelectorAll('.time');
 let balls = document.querySelectorAll('.ball');
 let switchButtonStart, catRezerse;
@@ -19,6 +19,29 @@ const screenWidth = window.screen.width;
 
 const sleep = (milliseconds) => {
 	return new Promise(resolve => setTimeout(resolve, milliseconds))
+}
+
+window.addEventListener('resize', resizeCanvas, false);
+context = starsCanvas.getContext("2d"), stars = screenWidth / 10;
+
+function resizeCanvas() {
+	starsCanvas.width = window.innerWidth;
+	starsCanvas.height = window.innerHeight - 300;
+	drawStuff();
+}
+
+resizeCanvas();
+
+function drawStuff() {
+	for (let j = 0; j < stars; j++) {
+		x = Math.random() * starsCanvas.offsetWidth;
+		y = Math.random() * starsCanvas.offsetHeight, 
+		radius = Math.random() * 1.2;
+		context.beginPath();
+		context.arc(x, y, radius, 0, 360);
+		context.fillStyle = "white";
+		context.fill();
+	}
 }
 
 
@@ -32,7 +55,6 @@ const goCat = async () => {
 					break;
 				}
 				catImg.classList.remove('cat-reverse');
-				// catRun.style.left = i + 'px';
 				catRun.style.transform = 'translate(' + i + 'px, 0)';
 				newSpeed.textContent = i;
 				await sleep(-(+speedCat.value - 10));
@@ -49,7 +71,6 @@ const goCat = async () => {
 					break;
 				}
 				catImg.classList.add('cat-reverse');
-				// catRun.style.left = i + 'px';
 				catRun.style.transform = 'translate(' + i + 'px, 0)';
 				newSpeed.textContent = i;
 				await sleep(-(+speedCat.value - 10));
@@ -66,7 +87,7 @@ function startCat() {
 	cornersInput.setAttribute('disabled', '');
 	controlsCat[0].textContent = 'Стоп';
 	titleCounter.textContent = 'Развороты: ';
-	catImg.src = 'cat_walk.gif';
+	catImg.src = '/images/cat_walk.gif';
 	switchButtonStart = true;
 	corners.textContent = countCorners;
 }
@@ -80,7 +101,7 @@ function reverseCat() {
 function stopCat() {
 	if (countCorners === cornersMax && cornersMax !== 0) resetCat();
 	controlsCat[0].textContent = 'Cтарт';
-	catImg.src = 'cat_walk_no_anim.gif';
+	catImg.src = '/images/cat_walk_no_anim.gif';
 	switchButtonStart = false;
 }
 
@@ -89,7 +110,6 @@ function resetCat() {
 	catRezerse = false;
 	switchButtonStart = false;
 	i = 0;
-	// catRun.style.left = i + 'px';
 	catRun.style.transform = 'translate(0px, 0)';
 	controlsCat[0].textContent = 'Cтарт';
 	titleCounter.textContent = 'Развороты: ';
@@ -133,24 +153,20 @@ for (let time of timesRadio) {
 	time.onclick = function () {
 
 		for (let setAttr of timesRadio) setAttr.setAttribute('disabled', '');
-		
+
 		setTimeout(radio_enabled, 5000);
-		
+
 		if (time.value === 'night_time') {
-			night.classList.remove('night-sunrise');
 			balls[0].classList.remove('sun-sunrise');
 			balls[1].classList.remove('moon-sunrise');
 			catRoad.classList.remove('sky-sunrise');
-			night.classList.add('night-sunset');
 			balls[0].classList.add('sun-sunset');
 			balls[1].classList.add('moon-sunset');
 			catRoad.classList.add('sky-sunset');
 		} else {
-			night.classList.remove('night-sunset');
 			balls[0].classList.remove('sun-sunset');
 			balls[1].classList.remove('moon-sunset');
 			catRoad.classList.remove('sky-sunset');
-			night.classList.add('night-sunrise');
 			balls[0].classList.add('sun-sunrise');
 			balls[1].classList.add('moon-sunrise');
 			catRoad.classList.add('sky-sunrise');
