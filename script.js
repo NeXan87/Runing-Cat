@@ -50,7 +50,6 @@ function drawStuff() {
 	}
 }
 
-
 const goCat = async () => {
 	if (switchButtonStart) {
 
