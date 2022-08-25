@@ -183,9 +183,5 @@ function radio_enabled() {
 
 menuButton.onclick = function() {
 	menuButton.classList.toggle('open');
-	if (menuButton.classList.contains('open')) {
-		parameters.style.transform = 'translate(0px, 50px)';
-	} else {
-		parameters.style.transform = null;
-	}
+	parameters.classList.toggle('open');
 }

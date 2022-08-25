@@ -98,15 +98,18 @@ body {
 
 .menu.open {
 	width: 0%;
+	right: 16px;
 }
 
 .menu.open::before {
 	top: 0px;
+	right: -16px;
 	transform: rotate(45deg);
 }
 
 .menu.open::after {
 	bottom: 0px;
+	right: -16px;
 	transform: rotate(-45deg);
 }
 
