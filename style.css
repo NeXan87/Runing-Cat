@@ -228,11 +228,13 @@ body {
 }
 
 .sky-sunset {
-	animation: sky-sunset 5s ease-in-out 1 normal forwards;
+	-webkit-animation: sky-sunset 5s ease-in-out 1 normal forwards;
+	        animation: sky-sunset 5s ease-in-out 1 normal forwards;
 }
 
 .sky-sunrise {
-	animation: sky-sunrise 5s ease-in-out 1 normal forwards;
+	-webkit-animation: sky-sunrise 5s ease-in-out 1 normal forwards;
+	        animation: sky-sunrise 5s ease-in-out 1 normal forwards;
 }
 
 .cloud {
@@ -241,7 +243,8 @@ body {
 	left: 0;
 	opacity: .9;
 	transform: translate(-41vw, 0px);
-	animation: cloud linear infinite normal;
+	-webkit-animation: cloud linear infinite normal;
+	        animation: cloud linear infinite normal;
 }
 
 .night,
@@ -299,46 +302,57 @@ body {
 }
 
 .sun-sunset {
-	animation: sun-sunset 5s ease-in 1 normal forwards;
+	-webkit-animation: sun-sunset 5s ease-in 1 normal forwards;
+	        animation: sun-sunset 5s ease-in 1 normal forwards;
 }
 
 .sun-sunrise {
-	animation: sun-sunrise 5s ease-out 1 normal forwards;
+	-webkit-animation: sun-sunrise 5s ease-out 1 normal forwards;
+	        animation: sun-sunrise 5s ease-out 1 normal forwards;
 }
 
 .moon-sunset {
-	animation: moon-sunset 5s ease-out 1 normal forwards;
+	-webkit-animation: moon-sunset 5s ease-out 1 normal forwards;
+	        animation: moon-sunset 5s ease-out 1 normal forwards;
 }
 
 .moon-sunrise {
-	animation: moon-sunrise 5s ease-in 1 normal forwards;
+	-webkit-animation: moon-sunrise 5s ease-in 1 normal forwards;
+	        animation: moon-sunrise 5s ease-in 1 normal forwards;
 }
 
 .cloud-1 {
 	width: 70px;
 	top: 50px;
-	animation-duration: 50s;
+	-webkit-animation-duration: 50s;
+	        animation-duration: 50s;
 }
 
 .cloud-2 {
 	width: 90px;
 	top: 70px;
-	animation-duration: 60s;
-	animation-delay: 5s;
+	-webkit-animation-duration: 60s;
+	        animation-duration: 60s;
+	-webkit-animation-delay: 5s;
+	        animation-delay: 5s;
 }
 
 .cloud-3 {
 	width: 110px;
 	top: 90px;
-	animation-duration: 70s;
-	animation-delay: 15s;
+	-webkit-animation-duration: 70s;
+	        animation-duration: 70s;
+	-webkit-animation-delay: 15s;
+	        animation-delay: 15s;
 }
 
 .cloud-4 {
 	width: 130px;
 	top: 110px;
-	animation-duration: 80s;
-	animation-delay: 25s;
+	-webkit-animation-duration: 80s;
+	        animation-duration: 80s;
+	-webkit-animation-delay: 25s;
+	        animation-delay: 25s;
 }
 
 .cat {
@@ -381,6 +395,18 @@ body {
 	position: relative;
 }
 
+@-webkit-keyframes sky-sunset {
+	60% {
+		background: Coral;
+		box-shadow: 0 450px 255px -67px steelblue inset;
+	}
+
+	to {
+		background: #020e24;
+		box-shadow: 0 1000px 255px -67px #0f2962 inset;
+	}
+}
+
 @keyframes sky-sunset {
 	60% {
 		background: Coral;
@@ -390,6 +416,23 @@ body {
 	to {
 		background: #020e24;
 		box-shadow: 0 1000px 255px -67px #0f2962 inset;
+	}
+}
+
+@-webkit-keyframes sky-sunrise {
+	from {
+		background: #020e24;
+		box-shadow: 0 1000px 255px -67px #0f2962 inset;
+	}
+
+	60% {
+		background: Coral;
+		box-shadow: 0 450px 255px -67px steelblue inset;
+	}
+
+	to {
+		background: PaleTurquoise;
+		box-shadow: 0 600px 255px -67px LightCyan inset;
 	}
 }
 
@@ -410,6 +453,16 @@ body {
 	}
 }
 
+@-webkit-keyframes sun-sunset {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(180deg);
+	}
+}
+
 @keyframes sun-sunset {
 	from {
 		transform: rotate(0deg);
@@ -420,7 +473,27 @@ body {
 	}
 }
 
+@-webkit-keyframes sun-sunrise {
+	from {
+		transform: rotate(180deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+
 @keyframes sun-sunrise {
+	from {
+		transform: rotate(180deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@-webkit-keyframes moon-sunset {
 	from {
 		transform: rotate(180deg);
 	}
@@ -440,6 +513,16 @@ body {
 	}
 }
 
+@-webkit-keyframes moon-sunrise {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(180deg);
+	}
+}
+
 @keyframes moon-sunrise {
 	from {
 		transform: rotate(0deg);
@@ -447,6 +530,16 @@ body {
 
 	to {
 		transform: rotate(180deg);
+	}
+}
+
+@-webkit-keyframes cloud {
+	from {
+		transform: translate(-41vw, 0px);
+	}
+
+	to {
+		transform: translate(100vw, 0px);
 	}
 }
 
