@@ -132,11 +132,11 @@ body {
 	padding: 10px 0;
 }
 
-.desc-corners {
+.desc-undes {
 	margin-right: 10px;
 }
 
-.max-corners {
+.max-undes {
 	width: 65px;
 	border-radius: 5px;
 	border: 1px solid #878787;
@@ -144,7 +144,7 @@ body {
 	align-self: center;
 }
 
-.max-corners:focus {
+.max-undes:focus {
 	outline: none;
 }
 
@@ -153,7 +153,7 @@ body {
 	vertical-align: middle;
 }
 
-.title-corners {
+.title-undes {
 	display: flex;
 }
 
@@ -227,12 +227,12 @@ body {
 	margin-top: 1px;
 }
 
-.sky-sunset {
+.cat-road.night {
 	-webkit-animation: sky-sunset 5s ease-in-out 1 normal forwards;
 	        animation: sky-sunset 5s ease-in-out 1 normal forwards;
 }
 
-.sky-sunrise {
+.cat-road.day {
 	-webkit-animation: sky-sunrise 5s ease-in-out 1 normal forwards;
 	        animation: sky-sunrise 5s ease-in-out 1 normal forwards;
 }
@@ -247,7 +247,7 @@ body {
 	        animation: cloud linear infinite normal;
 }
 
-.night,
+.averlay,
 #stars {
 	position: absolute;
 	top: 0;
@@ -255,7 +255,7 @@ body {
 	transition: opacity 5s ease-in-out;
 }
 
-.night {
+.averlay {
 	background: #000;
 	z-index: 3;
 	opacity: 0;
@@ -263,8 +263,7 @@ body {
 	height: 100%;
 }
 
-.sky-sunset .night,
-.sky-sunsrise .night {
+.cat-road.night .averlay {
 	opacity: .6;
 }
 
@@ -301,22 +300,22 @@ body {
 	transform: rotate(180deg);
 }
 
-.sun-sunset {
+.cat-road.night .sun {
 	-webkit-animation: sun-sunset 5s ease-in 1 normal forwards;
 	        animation: sun-sunset 5s ease-in 1 normal forwards;
 }
 
-.sun-sunrise {
+.cat-road.day .sun {
 	-webkit-animation: sun-sunrise 5s ease-out 1 normal forwards;
 	        animation: sun-sunrise 5s ease-out 1 normal forwards;
 }
 
-.moon-sunset {
+.cat-road.night .moon {
 	-webkit-animation: moon-sunset 5s ease-out 1 normal forwards;
 	        animation: moon-sunset 5s ease-out 1 normal forwards;
 }
 
-.moon-sunrise {
+.cat-road.day .moon {
 	-webkit-animation: moon-sunrise 5s ease-in 1 normal forwards;
 	        animation: moon-sunrise 5s ease-in 1 normal forwards;
 }

@@ -1,44 +1,41 @@
+let menuButton = document.querySelector('.menu');
+let parameters = document.querySelector('.parameters');
 let catRun = document.querySelector('.cat');
 let catImg = document.querySelector('.cat-image');
 let controlsCat = document.querySelectorAll('.button');
-let menuButton = document.querySelector('.menu');
-let parameters = document.querySelector('.parameters');
 let speedCat = document.querySelector('.speed-cat');
 let realSpeed = document.querySelector('.real-speed');
 let newSpeed = document.querySelector('.new-speed');
 let titleCounter = document.querySelector('.title-counter');
-let corners = document.querySelector('.count-corners');
-let cornersInput = document.querySelector('.max-corners');
+let undes = document.querySelector('.count-undes');
+let undesInput = document.querySelector('.max-undes');
 let catRoad = document.querySelector('.cat-road');
 let progressBar = document.querySelector('.progress-bar');
 let progress = document.querySelector('.progress');
 let progressStatus = document.querySelector('.progress-status');
 let starsCanvas = document.querySelector('#stars');
 let timesRadio = document.querySelectorAll('.time');
-let balls = document.querySelectorAll('.ball');
 let switchButtonStart, catRezerse;
-let i = 0;
-let cornersMax = 0;
-let countCorners = 0;
-let setProgress = 0;
+let i = undesCount = 0;
 const screenWidth = window.screen.width;
 
 const sleep = (milliseconds) => {
 	return new Promise(resolve => setTimeout(resolve, milliseconds))
 }
 
+// Отслеживание размена экрана для тега <canvas>
 window.addEventListener('resize', resizeCanvas, false);
 context = starsCanvas.getContext("2d"), stars = screenWidth / 10;
 
 function resizeCanvas() {
 	starsCanvas.width = window.innerWidth;
 	starsCanvas.height = window.innerHeight - 300;
-	drawStuff();
+	showStars();
 }
-
 resizeCanvas();
 
-function drawStuff() {
+// Функция расчета звезд
+function showStars() {
 	for (let j = 0; j < stars; j++) {
 		x = Math.random() * starsCanvas.offsetWidth;
 		y = Math.random() * starsCanvas.offsetHeight,
@@ -50,99 +47,109 @@ function drawStuff() {
 	}
 }
 
+
+// Функция движения кота
 const goCat = async () => {
 	if (switchButtonStart) {
 
-		if (cornersMax !== 0) {
-			progressBar.style.top = '6px';
-			setProgress = Math.round(countCorners / cornersMax * 100);
-			progress.value = setProgress;
-			progressStatus.textContent = setProgress + '%';
-		} else {
-			progressBar.style.top = null;
-			progress.value = 0;
-			progressStatus.textContent = 0 + '%';
-		}
+		calcProgress();
 
 		if (!catRezerse) {
 
-			for (i; i < screenWidth - 160; i += 2) {
-				if (!switchButtonStart || countCorners === cornersMax && cornersMax !== 0) {
+			for (; i < screenWidth - 160; i += 2) {
+				if (!switchButtonStart || undesCount === +undesInput.value && +undesInput.value !== 0) {
 					stopCat();
 					break;
 				}
 				catImg.classList.remove('cat-reverse');
-				catRun.style.transform = 'translate(' + i + 'px, 0)';
+				catRun.style.transform = 'translateX(' + i + 'px)';
 				newSpeed.textContent = i;
 				await sleep(-(+speedCat.value - 10));
 			}
-			if (switchButtonStart) {
-				reverseCat();
-			}
+			reverseCat();
 
 		} else {
 
-			for (i; i > 0; i -= 2) {
-				if (!switchButtonStart || countCorners === cornersMax && cornersMax !== 0) {
+			for (; i > 0; i -= 2) {
+				if (!switchButtonStart || undesCount === +undesInput.value && +undesInput.value !== 0) {
 					stopCat();
 					break;
 				}
 				catImg.classList.add('cat-reverse');
-				catRun.style.transform = 'translate(' + i + 'px, 0)';
+				catRun.style.transform = 'translateX(' + i + 'px)';
 				newSpeed.textContent = i;
 				await sleep(-(+speedCat.value - 10));
 			}
-			if (switchButtonStart) {
-				reverseCat();
-			}
+			reverseCat();
 
 		}
 	}
 }
 
+// Функция расчета прогресса в процентах
+function calcProgress() {
+	if (+undesInput.value !== 0) {
+		progressBar.style.top = '6px';
+		progress.value = Math.round(undesCount / +undesInput.value * 100);
+		progressStatus.textContent = progress.value + '%';
+	} else {
+		progressBar.style.top = null;
+		progress.value = 0;
+		progressStatus.textContent = 0 + '%';
+	}
+}
+
+// Функция реверса кота
+function reverseCat() {
+	if (switchButtonStart) {
+		undes.textContent = ++undesCount;
+		(!catRezerse) ? catRezerse = true : catRezerse = false;
+		goCat();
+	}
+}
+
+// Функция старта кота
 function startCat() {
-	cornersInput.setAttribute('disabled', '');
+	undesInput.setAttribute('disabled', '');
 	controlsCat[0].textContent = 'Стоп';
 	titleCounter.textContent = 'Развороты: ';
 	catImg.src = 'cat_walk.gif';
 	switchButtonStart = true;
-	corners.textContent = countCorners;
+	undes.textContent = undesCount;
 }
 
-function reverseCat() {
-	corners.textContent = ++countCorners;
-	(!catRezerse) ? catRezerse = true : catRezerse = false;
-	goCat();
-}
-
+// Функция остановки кота
 function stopCat() {
-	if (countCorners === cornersMax && cornersMax !== 0) resetCat();
+	if (undesCount === +undesInput.value && +undesInput.value !== 0) resetCat();
 	controlsCat[0].textContent = 'Cтарт';
 	catImg.src = 'cat_walk_no_anim.gif';
 	switchButtonStart = false;
 }
 
+
+// Функция сброса всех режимов
 function resetCat() {
-	cornersInput.removeAttribute('disabled', '');
+	undesInput.removeAttribute('disabled', '');
 	catRezerse = false;
 	switchButtonStart = false;
 	i = 0;
-	catRun.style.transform = 'translate(0px, 0)';
+	catRun.style.transform = 'translateX(0px)';
 	controlsCat[0].textContent = 'Cтарт';
 	titleCounter.textContent = 'Развороты: ';
 	catImg.src = 'cat_walk_no_anim.gif';
 	catImg.classList.remove('cat-reverse');
 	newSpeed.textContent = 0;
-	corners.textContent = 0;
-	cornersInput.value = 0;
-	if (countCorners === cornersMax && cornersMax !== 0) {
+	undes.textContent = 0;
+	undesInput.value = 0;
+	if (undesCount === +undesInput.value && +undesInput.value !== 0) {
 		titleCounter.textContent = 'Разворотов: ';
-		corners.textContent = cornersMax;
+		undes.textContent = +undesInput.value;
 	}
-	countCorners = 0;
-	cornersMax = 0;
+	undesCount = 0;
+	undesInput.value = 0;
 }
 
+// Отслеживание нажатия кнопки "Старт"
 controlsCat[0].onclick = function () {
 	if (!switchButtonStart) {
 		startCat();
@@ -153,7 +160,7 @@ controlsCat[0].onclick = function () {
 	}
 }
 
-
+// Отслеживание нажатия кнопки "Сброс"
 controlsCat[1].onclick = function () {
 	resetCat();
 	progress.value = 0;
@@ -161,44 +168,38 @@ controlsCat[1].onclick = function () {
 	progressBar.style.top = null;
 }
 
+// Отслеживание ползунка скорости
 speedCat.oninput = function () {
 	realSpeed.textContent = speedCat.value;
 }
 
-cornersInput.onchange = function () {
-	cornersMax = +cornersInput.value;
-}
-
+// Опрос радиокнопок "День" и "Ночь"
 for (let time of timesRadio) {
+
 	time.onclick = function () {
 
+		// Блокировка радиокнопок "День" и "Ночь" на 5 секунд
 		for (let setAttr of timesRadio) setAttr.setAttribute('disabled', '');
-
 		setTimeout(radio_enabled, 5000);
 
+		// Переключение классов "day" и "night" в div.cat-road
 		if (time.value === 'night_time') {
-			balls[0].classList.remove('sun-sunrise');
-			balls[1].classList.remove('moon-sunrise');
-			catRoad.classList.remove('sky-sunrise');
-			balls[0].classList.add('sun-sunset');
-			balls[1].classList.add('moon-sunset');
-			catRoad.classList.add('sky-sunset');
+			catRoad.classList.remove('day');
+			catRoad.classList.add('night');
 		} else {
-			balls[0].classList.remove('sun-sunset');
-			balls[1].classList.remove('moon-sunset');
-			catRoad.classList.remove('sky-sunset');
-			balls[0].classList.add('sun-sunrise');
-			balls[1].classList.add('moon-sunrise');
-			catRoad.classList.add('sky-sunrise');
+			catRoad.classList.remove('night');
+			catRoad.classList.add('day');
 		}
 	}
 
 }
 
+// Включение радиокнопок "День" и "Ночь" после срабатывания таймера
 function radio_enabled() {
 	for (let time of timesRadio) time.removeAttribute('disabled', '');
 }
 
+// Открытие мобильного меню по клику на кнопке "Меню"
 menuButton.onclick = function () {
 	menuButton.classList.toggle('open');
 	parameters.classList.toggle('open');

@@ -17,8 +17,8 @@
 			<div class="controls">
 				<div class="main-panel">
 					<div class="buttons">
-						<button type="button" class="button">Старт</button>
-						<button type="button" class="button">Сброс</button>
+						<button type="button" class="button start">Старт</button>
+						<button type="button" class="button reset">Сброс</button>
 					</div>
 					<form class="day-night">
 						<input type="radio" class="time" id="day" name="time" value="day_time" checked>
@@ -31,11 +31,11 @@
 					</div>
 				</div>
 				<div class="parameters">
-					<label class="data title-corners">
-						<div class="desc-corners">Макс. разворотов
+					<label class="data title-undes">
+						<div class="desc-undes">Макс. разворотов
 							<span class="infinity">0 - бесконечно</span>
 						</div>
-						<input class="max-corners" id="max-corners" type="number" name="max-corners" min="0" max="10000"
+						<input class="max-undes" id="max-undes" type="number" name="max-undes" min="0" max="10000"
 							value="0">
 					</label>
 					<label class="data title-speed">Скорость
@@ -43,9 +43,9 @@
 						<output class="data real-speed" name="real-speed">5</output>
 					</label>
 					<div class="data speed">X: <span class="new-speed">0</span></div>
-					<div class="data corners">
+					<div class="data undes">
 						<span class="title-counter">Развороты: </span>
-						<span class="count-corners">0</span>
+						<span class="count-undes">0</span>
 					</div>
 				</div>
 			</div>
@@ -54,7 +54,7 @@
 					<progress value="0" max="100" class="progress"></progress>
 					<span class="progress-status">0%</span>
 				</div>
-				<div class="night"></div>
+				<div class="averlay"></div>
 				<canvas id="stars" width="100%" height="100%"></canvas>
 				<div class="ball sun"></div>
 				<div class="ball moon"></div>

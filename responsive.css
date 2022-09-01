@@ -28,7 +28,7 @@
 		transition: transform .3s ease-in-out;
 	}
 
-	.parameters.open {
+		.parameters.open {
 		transform: translate(0px, 50px);
 	}
 
