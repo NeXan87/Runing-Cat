@@ -57,7 +57,9 @@ const goCat = async () => {
 		if (!catRezerse) {
 
 			for (; i < screenWidth - 160; i += 2) {
-				if (!switchButtonStart || undesCount === +undesInput.value && +undesInput.value !== 0) {
+				if (!switchButtonStart
+					|| undesCount === +undesInput.value
+					&& +undesInput.value !== 0) {
 					stopCat();
 					break;
 				}
@@ -69,7 +71,9 @@ const goCat = async () => {
 		} else {
 
 			for (; i > 0; i -= 2) {
-				if (!switchButtonStart || undesCount === +undesInput.value && +undesInput.value !== 0) {
+				if (!switchButtonStart
+					|| undesCount === +undesInput.value
+					&& +undesInput.value !== 0) {
 					stopCat();
 					break;
 				}
