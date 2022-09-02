@@ -1,3 +1,5 @@
+"use script"
+
 let menuButton = document.querySelector('.menu');
 let parameters = document.querySelector('.parameters');
 let catRun = document.querySelector('.cat');
@@ -19,9 +21,7 @@ let switchButtonStart, catRezerse;
 let i = undesCount = 0;
 const screenWidth = window.screen.width;
 
-const sleep = (milliseconds) => {
-	return new Promise(resolve => setTimeout(resolve, milliseconds))
-}
+const sleep = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
 
 // Отслеживание размена экрана для тега <canvas>
 window.addEventListener('resize', resizeCanvas, false);
