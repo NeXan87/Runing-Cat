@@ -61,9 +61,7 @@ const goCat = async () => {
 					stopCat();
 					break;
 				}
-				catImg.classList.remove('cat-reverse');
-				catRun.style.transform = 'translateX(' + i + 'px)';
-				newSpeed.textContent = i;
+				translateCat();
 				await sleep(-(+speedCat.value - 10));
 			}
 			reverseCat();
@@ -75,9 +73,7 @@ const goCat = async () => {
 					stopCat();
 					break;
 				}
-				catImg.classList.add('cat-reverse');
-				catRun.style.transform = 'translateX(' + i + 'px)';
-				newSpeed.textContent = i;
+				translateCat();
 				await sleep(-(+speedCat.value - 10));
 			}
 			reverseCat();
@@ -86,16 +82,23 @@ const goCat = async () => {
 	}
 }
 
+// Функция движения кота
+function translateCat() {
+	catRun.style.transform = `translateX(${i}px`;
+	newSpeed.textContent = i;
+	(!catRezerse) ? catImg.classList.remove('cat-reverse') : catImg.classList.add('cat-reverse');
+}
+
 // Функция расчета прогресса в процентах
 function calcProgress() {
 	if (+undesInput.value !== 0) {
 		progressBar.style.top = '6px';
 		progress.value = Math.round(undesCount / +undesInput.value * 100);
-		progressStatus.textContent = progress.value + '%';
+		progressStatus.textContent = `${progress.value}%`;
 	} else {
 		progressBar.style.top = null;
 		progress.value = 0;
-		progressStatus.textContent = 0 + '%';
+		progressStatus.textContent = '0%';
 	}
 }
 
@@ -149,8 +152,13 @@ function resetCat() {
 	undesInput.value = 0;
 }
 
+// Включение радиокнопок "День" и "Ночь" после срабатывания таймера
+function radio_enabled() {
+	for (let time of timesRadio) time.removeAttribute('disabled', '');
+}
+
 // Отслеживание нажатия кнопки "Старт"
-controlsCat[0].onclick = function () {
+controlsCat[0].onclick = () => {
 	if (!switchButtonStart) {
 		startCat();
 		goCat();
@@ -161,22 +169,28 @@ controlsCat[0].onclick = function () {
 }
 
 // Отслеживание нажатия кнопки "Сброс"
-controlsCat[1].onclick = function () {
+controlsCat[1].onclick = () => {
 	resetCat();
 	progress.value = 0;
-	progressStatus.textContent = 0 + '%';
+	progressStatus.textContent = '0%';
 	progressBar.style.top = null;
 }
 
 // Отслеживание ползунка скорости
-speedCat.oninput = function () {
+speedCat.oninput = () => {
 	realSpeed.textContent = speedCat.value;
+}
+
+// Открытие мобильного меню по клику на кнопке "Меню"
+menuButton.onclick = () => {
+	menuButton.classList.toggle('open');
+	parameters.classList.toggle('open');
 }
 
 // Опрос радиокнопок "День" и "Ночь"
 for (let time of timesRadio) {
 
-	time.onclick = function () {
+	time.onclick = () => {
 
 		// Блокировка радиокнопок "День" и "Ночь" на 5 секунд
 		for (let setAttr of timesRadio) setAttr.setAttribute('disabled', '');
@@ -190,17 +204,8 @@ for (let time of timesRadio) {
 			catRoad.classList.remove('night');
 			catRoad.classList.add('day');
 		}
+
 	}
 
 }
 
-// Включение радиокнопок "День" и "Ночь" после срабатывания таймера
-function radio_enabled() {
-	for (let time of timesRadio) time.removeAttribute('disabled', '');
-}
-
-// Открытие мобильного меню по клику на кнопке "Меню"
-menuButton.onclick = function () {
-	menuButton.classList.toggle('open');
-	parameters.classList.toggle('open');
-}
