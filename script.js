@@ -137,7 +137,7 @@ function resetCat() {
 function disabledRadio() {
 	for (let setAttr of timesRadio) setAttr.setAttribute('disabled', '');
 	setTimeout(() => {
-		for (let time of timesRadio) time.removeAttribute('disabled', '')
+		for (let setAttr of timesRadio) setAttr.removeAttribute('disabled', '');
 	}, 5000);
 }
 
