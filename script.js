@@ -123,11 +123,11 @@ function resetCat() {
 	catImg.src = 'cat_walk_no_anim.gif';
 	catImg.classList.remove('cat-reverse');
 	newSpeed.textContent = 0;
-	undes.textContent = 0;
-	undesInput.value = 0;
 	if (undesCount === +undesInput.value && +undesInput.value !== 0) {
 		titleCounter.textContent = 'Разворотов: ';
 		undes.textContent = +undesInput.value;
+	} else {
+		undes.textContent = 0;
 	}
 	undesCount = 0;
 	undesInput.value = 0;
