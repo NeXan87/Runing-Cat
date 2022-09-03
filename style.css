@@ -271,8 +271,7 @@ body {
 	opacity: 0;
 }
 
-.sky-sunset #stars,
-.sky-sunsrise #stars {
+.night #stars {
 	opacity: 1;
 }
 

@@ -18,7 +18,7 @@ let progressStatus = document.querySelector('.progress-status');
 let starsCanvas = document.querySelector('#stars');
 let timesRadio = document.querySelectorAll('.time');
 let switchButtonStart, catRezerse, interval;
-let i = undesCount = 0;
+let coordinateX = undesCount = 0;
 const screenWidth = window.screen.width;
 
 // Отслеживание размена экрана для тега <canvas>
@@ -50,13 +50,13 @@ function translateCat() {
 	calcProgress();
 	if (undesCount !== +undesInput.value || +undesInput.value === 0) {
 		if (!catRezerse) {
-			catRun.style.transform = `translateX(${i += 2}px`;
-			if (i === screenWidth - 160) reverseCat();
+			catRun.style.transform = `translateX(${coordinateX += 2}px`;
+			if (coordinateX === screenWidth - 160) reverseCat();
 		} else {
-			catRun.style.transform = `translateX(${i -= 2}px`;
-			if (i === 0) reverseCat();
+			catRun.style.transform = `translateX(${coordinateX -= 2}px`;
+			if (coordinateX === 0) reverseCat();
 		}
-		newSpeed.textContent = i;
+		newSpeed.textContent = coordinateX;
 	} else {
 		stopCat();
 	}
@@ -109,7 +109,6 @@ function stopCat() {
 	switchButtonStart = false;
 }
 
-
 // Функция сброса всех режимов
 function resetCat() {
 	clearInterval(interval);
@@ -117,7 +116,7 @@ function resetCat() {
 	speedCat.removeAttribute('disabled', '');
 	catRezerse = false;
 	switchButtonStart = false;
-	i = 0;
+	coordinateX = 0;
 	catRun.style.transform = null;
 	controlsCat[0].textContent = 'Cтарт';
 	titleCounter.textContent = 'Развороты: ';
@@ -135,8 +134,11 @@ function resetCat() {
 }
 
 // Включение радиокнопок "День" и "Ночь" после срабатывания таймера
-function radio_enabled() {
-	for (let time of timesRadio) time.removeAttribute('disabled', '');
+function disabledRadio() {
+	for (let setAttr of timesRadio) setAttr.setAttribute('disabled', '');
+	setTimeout(() => {
+		for (let time of timesRadio) time.removeAttribute('disabled', '')
+	}, 5000);
 }
 
 // Отслеживание нажатия кнопки "Старт"
@@ -172,20 +174,19 @@ for (let time of timesRadio) {
 
 	time.onclick = () => {
 
-		// Блокировка радиокнопок "День" и "Ночь" на 5 секунд
-		for (let setAttr of timesRadio) setAttr.setAttribute('disabled', '');
-		setTimeout(radio_enabled, 5000);
+		disabledRadio();
 
 		// Переключение классов "day" и "night" в div.cat-road
-		if (time.value === 'night_time') {
-			catRoad.classList.remove('day');
-			catRoad.classList.add('night');
-		} else {
-			catRoad.classList.remove('night');
-			catRoad.classList.add('day');
+		switch (time.value) {
+			case 'night_time':
+				catRoad.classList.remove('day');
+				catRoad.classList.add('night');
+				break;
+			case 'day_time':
+				catRoad.classList.remove('night');
+				catRoad.classList.add('day');
+				break;
 		}
-
 	}
-
 }
 
