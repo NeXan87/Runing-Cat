@@ -17,11 +17,9 @@ let progress = document.querySelector('.progress');
 let progressStatus = document.querySelector('.progress-status');
 let starsCanvas = document.querySelector('#stars');
 let timesRadio = document.querySelectorAll('.time');
-let switchButtonStart, catRezerse;
+let switchButtonStart, catRezerse, interval;
 let i = undesCount = 0;
 const screenWidth = window.screen.width;
-
-const sleep = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
 
 // Отслеживание размена экрана для тега <canvas>
 window.addEventListener('resize', resizeCanvas, false);
@@ -47,50 +45,21 @@ function showStars() {
 	}
 }
 
-
-// Функция движения кота
-const goCat = async () => {
-	if (switchButtonStart) {
-
-		calcProgress();
-
-		if (!catRezerse) {
-
-			for (; i < screenWidth - 160; i += 2) {
-				if (!switchButtonStart
-					|| undesCount === +undesInput.value
-					&& +undesInput.value !== 0) {
-					stopCat();
-					break;
-				}
-				translateCat();
-				await sleep(-(+speedCat.value - 10));
-			}
-			reverseCat();
-
-		} else {
-
-			for (; i > 0; i -= 2) {
-				if (!switchButtonStart
-					|| undesCount === +undesInput.value
-					&& +undesInput.value !== 0) {
-					stopCat();
-					break;
-				}
-				translateCat();
-				await sleep(-(+speedCat.value - 10));
-			}
-			reverseCat();
-
-		}
-	}
-}
-
 // Функция движения кота
 function translateCat() {
-	catRun.style.transform = `translateX(${i}px`;
-	newSpeed.textContent = i;
-	(!catRezerse) ? catImg.classList.remove('cat-reverse') : catImg.classList.add('cat-reverse');
+	calcProgress();
+	if (undesCount !== +undesInput.value || +undesInput.value === 0) {
+		if (!catRezerse) {
+			catRun.style.transform = `translateX(${i += 2}px`;
+			if (i === screenWidth - 160) reverseCat();
+		} else {
+			catRun.style.transform = `translateX(${i -= 2}px`;
+			if (i === 0) reverseCat();
+		}
+		newSpeed.textContent = i;
+	} else {
+		stopCat();
+	}
 }
 
 // Функция расчета прогресса в процентах
@@ -108,16 +77,21 @@ function calcProgress() {
 
 // Функция реверса кота
 function reverseCat() {
-	if (switchButtonStart) {
-		undes.textContent = ++undesCount;
-		(!catRezerse) ? catRezerse = true : catRezerse = false;
-		goCat();
+	undes.textContent = ++undesCount;
+	if (!catRezerse) {
+		catRezerse = true;
+		catImg.classList.add('cat-reverse');
+	} else {
+		catRezerse = false;
+		catImg.classList.remove('cat-reverse');
 	}
 }
 
 // Функция старта кота
 function startCat() {
+	interval = setInterval(translateCat, Math.abs(+speedCat.value - 10));
 	undesInput.setAttribute('disabled', '');
+	speedCat.setAttribute('disabled', '');
 	controlsCat[0].textContent = 'Стоп';
 	titleCounter.textContent = 'Развороты: ';
 	catImg.src = 'cat_walk.gif';
@@ -127,7 +101,9 @@ function startCat() {
 
 // Функция остановки кота
 function stopCat() {
+	clearInterval(interval);
 	if (undesCount === +undesInput.value && +undesInput.value !== 0) resetCat();
+	speedCat.removeAttribute('disabled', '');
 	controlsCat[0].textContent = 'Cтарт';
 	catImg.src = 'cat_walk_no_anim.gif';
 	switchButtonStart = false;
@@ -136,11 +112,13 @@ function stopCat() {
 
 // Функция сброса всех режимов
 function resetCat() {
+	clearInterval(interval);
 	undesInput.removeAttribute('disabled', '');
+	speedCat.removeAttribute('disabled', '');
 	catRezerse = false;
 	switchButtonStart = false;
 	i = 0;
-	catRun.style.transform = 'translateX(0px)';
+	catRun.style.transform = null;
 	controlsCat[0].textContent = 'Cтарт';
 	titleCounter.textContent = 'Развороты: ';
 	catImg.src = 'cat_walk_no_anim.gif';
@@ -165,10 +143,8 @@ function radio_enabled() {
 controlsCat[0].onclick = () => {
 	if (!switchButtonStart) {
 		startCat();
-		goCat();
 	} else {
 		stopCat();
-		goCat();
 	}
 }
 
